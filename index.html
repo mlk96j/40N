@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الأربعون النووية</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+        
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Amiri', sans-serif;
             direction: rtl;
             text-align: center;
             background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/Kheops-Pyramid.jpg') no-repeat center center fixed;
@@ -23,7 +25,7 @@
             border-radius: 10px;
         }
         .info-title {
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
             margin-bottom: 15px;
         }
@@ -57,7 +59,7 @@
 <body>
     <div class="info-container">
         <div class="info-box">
-            <div class="title-box">السعودية تاريخيا</div>
+            <div class="title-box">الأربعون النووية</div>
             <p id="info-number">الحديث رقم: 1</p>
             <p id="info-content">هذه المعلومة الأساسية عن الأهرامات.</p>
         </div>
@@ -91,6 +93,7 @@
             } else {
                 detailsBox.style.display = 'none';
                 moreDetailsButton.style.display = 'block';
+                moreDetailsButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     </script>
