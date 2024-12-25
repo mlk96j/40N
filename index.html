@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأربعون النووية</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/Kheops-Pyramid.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        .info-container {
+            margin: 100px auto;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .info-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .info-box {
+            margin-bottom: 20px;
+        }
+        .toggle-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .toggle-box.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-container">
+        <div class="info-box">
+            <div class="info-title" id="info-title">الأربعون النووية</div>
+            <p id="info-number">الحديث: 1</p>
+            <p id="info-content">هذه المعلومة الأساسية عن الأهرامات.</p>
+        </div>
+        <div class="toggle-box hidden" id="details-box">
+            <p id="details-content">شرح الحديث</p>
+            <button onclick="toggleDetails()">عرض أقل</button>
+        </div>
+        <button id="more-details-button" onclick="showDetails()">عرض المزيد</button>
+    </div>
+
+    <script>
