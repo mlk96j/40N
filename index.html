@@ -6,7 +6,7 @@
     <title>الأربعون النووية</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
-        
+
         body {
             margin: 0;
             padding: 0;
@@ -25,15 +25,23 @@
             border-radius: 10px;
         }
         .info-title {
-            font-size: 80px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 15px;
         }
         .info-box {
             margin-bottom: 20px;
         }
-
-/* Titel in einer Box */
+        .info-number {
+            font-size: 20px;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        .info-content {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        /* Titel in einer Box */
         .title-box {
             background-color: #fff;
             color: #013220;
@@ -46,11 +54,10 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        
         .toggle-box {
             background-color: rgba(255, 255, 255, 0.2);
             padding: 15px;
-            border-radius: 12px;
+            border-radius: 8px;
             display: none;
         }
         #more-details-button {
@@ -63,17 +70,28 @@
     <div class="info-container">
         <div class="info-box">
             <div class="title-box">الأربعون النووية</div>
-            <p id="info-number">الحديث رقم: 1</p>
-            <p id="info-content">هذه المعلومة الأساسية عن الأهرامات.</p>
+            <p class="info-number" id="info-number">الحديث: الأول</p>
+            <p class="info-content" id="info-content">هذه المعلومة الأساسية عن الأهرامات.</p>
         </div>
         <div class="toggle-box" id="details-box">
-            <p id="details-content">شرح الحديث</p>
+            <p id="details-content">شرح الديث</p>
             <button onclick="toggleDetails(false)">عرض أقل</button>
         </div>
         <button id="more-details-button" onclick="toggleDetails(true)">عرض المزيد</button>
     </div>
 
     <script>
+// Arabische Nummerierung dynamisch generieren
+        function arabicNumbering(n) {
+            const arabicTens = ["", "العاشر", "العشرون", "الثلاثون", "الأربعون"];
+            const arabicUnits = ["", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن", "التاسع"];
+
+            if (n <= 10) return arabicUnits[n];
+            const tens = Math.floor(n / 10);
+            const units = n % 10;
+            return units === 0 ? arabicTens[tens] : `${arabicUnits[units]} ${arabicTens[tens]}`;
+        }
+
         // Zufällige Info aus der externen Datenbank abrufen
         document.addEventListener("DOMContentLoaded", () => {
             const randomInfo = infos[Math.floor(Math.random() * infos.length)];
@@ -81,10 +99,11 @@
             const infoContent = document.getElementById('info-content');
             const detailsContent = document.getElementById('details-content');
 
-            infoNumber.textContent = `رقم الحديث: ${randomInfo.number}`;
+            infoNumber.textContent = `رقم المعلومة: ${arabicNumbering(randomInfo.number)}`;
             infoContent.textContent = randomInfo.main;
             detailsContent.textContent = randomInfo.details;
         });
+
 
         function toggleDetails(show) {
             const detailsBox = document.getElementById('details-box');
@@ -96,7 +115,6 @@
             } else {
                 detailsBox.style.display = 'none';
                 moreDetailsButton.style.display = 'block';
-                moreDetailsButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     </script>
