@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأربعون النووية</title>
+    <title>معلومات عن الأهرامات</title>
     <style>
         body {
             margin: 0;
@@ -34,9 +34,6 @@
             background-color: rgba(255, 255, 255, 0.2);
             padding: 15px;
             border-radius: 8px;
-            cursor: pointer;
-        }
-        .toggle-box.hidden {
             display: none;
         }
     </style>
@@ -45,15 +42,15 @@
 <body>
     <div class="info-container">
         <div class="info-box">
-            <div class="info-title" id="info-title">الأربعون النووية</div>
-            <p id="info-number">الحديث: 1</p>
+            <div class="info-title" id="info-title">معلومات عن الأهرامات</div>
+            <p id="info-number">رقم المعلومة: 1</p>
             <p id="info-content">هذه المعلومة الأساسية عن الأهرامات.</p>
         </div>
-        <div class="toggle-box hidden" id="details-box">
-            <p id="details-content">شرح الحديث</p>
-            <button onclick="toggleDetails()">عرض أقل</button>
+        <div class="toggle-box" id="details-box">
+            <p id="details-content">تفاصيل إضافية عن المعلومة.</p>
+            <button onclick="toggleDetails(false)">عرض أقل</button>
         </div>
-        <button id="more-details-button" onclick="showDetails()">عرض المزيد</button>
+        <button id="more-details-button" onclick="toggleDetails(true)">عرض المزيد</button>
     </div>
 
     <script>
@@ -69,18 +66,17 @@
             detailsContent.textContent = randomInfo.details;
         });
 
-        function showDetails() {
+        function toggleDetails(show) {
             const detailsBox = document.getElementById('details-box');
             const moreDetailsButton = document.getElementById('more-details-button');
-            detailsBox.classList.remove('hidden');
-            moreDetailsButton.classList.add('hidden');
-        }
 
-        function toggleDetails() {
-            const detailsBox = document.getElementById('details-box');
-            const moreDetailsButton = document.getElementById('more-details-button');
-            detailsBox.classList.add('hidden');
-            moreDetailsButton.classList.remove('hidden');
+            if (show) {
+                detailsBox.style.display = 'block';
+                moreDetailsButton.style.display = 'none';
+            } else {
+                detailsBox.style.display = 'none';
+                moreDetailsButton.style.display = 'block';
+            }
         }
     </script>
 </body>
