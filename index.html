@@ -40,6 +40,7 @@
             display: none;
         }
     </style>
+    <script src="facts.js" defer></script>
 </head>
 <body>
     <div class="info-container">
@@ -56,3 +57,31 @@
     </div>
 
     <script>
+        // Zufällige Info aus der externen Datenbank abrufen
+        document.addEventListener("DOMContentLoaded", () => {
+            const randomInfo = infos[Math.floor(Math.random() * infos.length)];
+            const infoNumber = document.getElementById('info-number');
+            const infoContent = document.getElementById('info-content');
+            const detailsContent = document.getElementById('details-content');
+
+            infoNumber.textContent = `رقم المعلومة: ${randomInfo.number}`;
+            infoContent.textContent = randomInfo.main;
+            detailsContent.textContent = randomInfo.details;
+        });
+
+        function showDetails() {
+            const detailsBox = document.getElementById('details-box');
+            const moreDetailsButton = document.getElementById('more-details-button');
+            detailsBox.classList.remove('hidden');
+            moreDetailsButton.classList.add('hidden');
+        }
+
+        function toggleDetails() {
+            const detailsBox = document.getElementById('details-box');
+            const moreDetailsButton = document.getElementById('more-details-button');
+            detailsBox.classList.add('hidden');
+            moreDetailsButton.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
