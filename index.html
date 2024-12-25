@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معلومات عن الأهرامات</title>
+    <title>الأربعون النووية</title>
     <style>
         body {
             margin: 0;
@@ -30,6 +30,21 @@
         .info-box {
             margin-bottom: 20px;
         }
+
+/* Titel in einer Box */
+        .title-box {
+            background-color: #fff;
+            color: #013220;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        
         .toggle-box {
             background-color: rgba(255, 255, 255, 0.2);
             padding: 15px;
@@ -42,12 +57,12 @@
 <body>
     <div class="info-container">
         <div class="info-box">
-            <div class="info-title" id="info-title">معلومات عن الأهرامات</div>
-            <p id="info-number">رقم المعلومة: 1</p>
+            <div class="title-box">السعودية تاريخيا</div>
+            <p id="info-number">الحديث رقم: 1</p>
             <p id="info-content">هذه المعلومة الأساسية عن الأهرامات.</p>
         </div>
         <div class="toggle-box" id="details-box">
-            <p id="details-content">تفاصيل إضافية عن المعلومة.</p>
+            <p id="details-content">شرح الحديث</p>
             <button onclick="toggleDetails(false)">عرض أقل</button>
         </div>
         <button id="more-details-button" onclick="toggleDetails(true)">عرض المزيد</button>
@@ -61,7 +76,7 @@
             const infoContent = document.getElementById('info-content');
             const detailsContent = document.getElementById('details-content');
 
-            infoNumber.textContent = `رقم المعلومة: ${randomInfo.number}`;
+            infoNumber.textContent = `رقم الحديث: ${randomInfo.number}`;
             infoContent.textContent = randomInfo.main;
             detailsContent.textContent = randomInfo.details;
         });
