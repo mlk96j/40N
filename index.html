@@ -74,7 +74,7 @@
         <div class="info-box">
             <div class="title-box">الأربعون النووية</div>
             <p class="info-number" id="info-number">الحديث: الأول</p>
-           <div id="info-content"> 
+            <div id="info-content"> 
                 <p>هذه هي المعلومة الأولى.</p>
             </div>
         </div>
@@ -86,6 +86,26 @@
     </div>
 
     <script>
+
+        // Zufällige Info aus der externen Datenbank abrufen
+        document.addEventListener("DOMContentLoaded", () => {
+            const randomInfo = infos[Math.floor(Math.random() * infos.length)];
+            const infoNumber = document.getElementById('info-number');
+            const infoContent = document.getElementById('info-content');
+            const detailsContent = document.getElementById('details-content');
+
+            infoNumber.textContent = `رقم المعلومة: ${arabicNumbering(randomInfo.number)}`;
+
+            // Lösche vorherigen Inhalt und füge Absätze hinzu
+            infoContent.innerHTML = ""; 
+            randomInfo.main.forEach(paragraph => {
+                const p = document.createElement('p');
+                p.textContent = paragraph;
+                infoContent.appendChild(p);
+            });
+
+            detailsContent.textContent = randomInfo.details;
+        });
 // Arabische Nummerierung dynamisch generieren
         function arabicNumbering(n) {
             const arabicTens = ["", "العاشر", "العشرون", "الثلاثون", "الأربعون"];
@@ -96,26 +116,6 @@
             const units = n % 10;
             return units === 0 ? arabicTens[tens] : `${arabicUnits[units]} ${arabicTens[tens]}`;
         }
-
-        // Zufällige Info aus der externen Datenbank abrufen
-        document.addEventListener("DOMContentLoaded", () => {
-            const randomInfo = infos[Math.floor(Math.random() * infos.length)];
-            const infoNumber = document.getElementById('info-number');
-            const infoContent = document.getElementById('info-content');
-            const detailsContent = document.getElementById('details-content');
-
-            infoNumber.textContent = `الحديث: ${arabicNumbering(randomInfo.number)}`;
-
-        // Lösche vorherigen Inhalt und füge Absätze hinzu
-        infoContent.innerHTML = ""; 
-        randomInfo.main.forEach(paragraph => {
-            const p = document.createElement('p');
-            p.textContent = paragraph;
-            infoContent.appendChild(p);
-        });
-
-        detailsContent.textContent = randomInfo.details;
-});
 
 
         function toggleDetails(show) {
