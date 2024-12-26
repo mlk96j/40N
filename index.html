@@ -94,7 +94,7 @@
             const infoContent = document.getElementById('info-content');
             const detailsContent = document.getElementById('details-content');
 
-            infoNumber.textContent = `رقم المعلومة: ${arabicNumbering(randomInfo.number)}`;
+            infoNumber.textContent = `الحديث: ${arabicNumbering(randomInfo.number)}`;
 
             // Lösche vorherigen Inhalt und füge Absätze hinzu
             infoContent.innerHTML = ""; 
@@ -106,18 +106,46 @@
 
             detailsContent.textContent = randomInfo.details;
         });
-// Arabische Nummerierung dynamisch generieren
-        function arabicNumbering(n) {
-            const arabicTens = ["", "العاشر", "العشرون", "الثلاثون", "الأربعون"];
-            const arabicUnits = ["", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن", "التاسع"];
+// Arabische Nummerierung dynamisch generierenfunction arabicNumbering(number) {
+    function arabicNumbering(number) {
+        const arabicUnits = [
+            "الأول", "الثاني", "الثالث", "الرابع", "الخامس", 
+            "السادس", "السابع", "الثامن", "التاسع", "العاشر"
+        ];
+        const specialCases = {
+            11: "الحادي عشر",
+            12: "الثاني عشر",
+            13: "الثالث عشر",
+            14: "الرابع عشر",
+            15: "الخامس عشر",
+            16: "السادس عشر",
+            17: "السابع عشر",
+            18: "الثامن عشر",
+            19: "التاسع عشر"
+       };
+       const arabicTens = [
+           "", "العاشر", "العشرون", "الثلاثون", "الأربعون"
+       ];
 
-            if (n <= 10) return arabicUnits[n];
-            const tens = Math.floor(n / 10);
-            const units = n % 10;
-            return units === 0 ? arabicTens[tens] : `${arabicUnits[units]} ${arabicTens[tens]}`;
-        }
+    if (number <= 10) {
+        return arabicUnits[number - 1];
+    }
+    if (specialCases[number]) {
+        return specialCases[number];
+    }
+    if (number % 10 === 0 && number <= 40) {
+        return arabicTens[number / 10];
+    }
+    if (number <= 40) {
+        const tens = Math.floor(number / 10);
+        const units = number % 10;
+        return `${arabicUnits[units - 1]} ${arabicTens[tens]}`;
+    }
 
+    return `رقم ${number}`; // Fallback für höhere Nummern
+}
 
+        // funktion zu mehr zeigen
         function toggleDetails(show) {
             const detailsBox = document.getElementById('details-box');
             const moreDetailsButton = document.getElementById('more-details-button');
