@@ -102,10 +102,18 @@
             const infoContent = document.getElementById('info-content');
             const detailsContent = document.getElementById('details-content');
 
-            infoNumber.textContent = `الحديث: ${arabicNumbering(randomInfo.number)}`;
-            infoContent.textContent = randomInfo.main;
-            detailsContent.textContent = randomInfo.details;
-        });
+        infoNumber.textContent = `الحديث: ${arabicNumbering(randomInfo.number)}`;
+
+        // Lösche vorherigen Inhalt und füge Absätze hinzu
+        infoContent.innerHTML = ""; 
+        randomInfo.main.forEach(paragraph => {
+            const p = document.createElement('p');
+            p.textContent = paragraph;
+            infoContent.appendChild(p);
+    });
+
+        detailsContent.textContent = randomInfo.details;
+});
 
 
         function toggleDetails(show) {
