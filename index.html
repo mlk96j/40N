@@ -102,7 +102,7 @@
             const infoContent = document.getElementById('info-content');
             const detailsContent = document.getElementById('details-content');
 
-        infoNumber.textContent = `الحديث: ${arabicNumbering(randomInfo.number)}`;
+            infoNumber.textContent = `الحديث: ${arabicNumbering(randomInfo.number)}`;
 
         // Lösche vorherigen Inhalt und füge Absätze hinzu
         infoContent.innerHTML = ""; 
@@ -110,7 +110,7 @@
             const p = document.createElement('p');
             p.textContent = paragraph;
             infoContent.appendChild(p);
-    });
+        });
 
         detailsContent.textContent = randomInfo.details;
 });
