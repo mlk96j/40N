@@ -114,42 +114,40 @@
     detailsContent.textContent = randomInfo.details;
 });
 // Arabische Nummerierung dynamisch generierenfunction arabicNumbering(number) {
-    function arabicNumbering(number) {
-        const arabicUnits = [
-            "الأول", "الثاني", "الثالث", "الرابع", "الخامس", 
-            "السادس", "السابع", "الثامن", "التاسع", "العاشر"
-        ];
-        const specialCases = {
-            11: "الحادي عشر",
-            12: "الثاني عشر",
-            13: "الثالث عشر",
-            14: "الرابع عشر",
-            15: "الخامس عشر",
-            16: "السادس عشر",
-            17: "السابع عشر",
-            18: "الثامن عشر",
-            19: "التاسع عشر"
-       };
-       const arabicTens = [
-           "", "العاشر", "العشرون", "الثلاثون", "الأربعون"
-       ];
+        function arabicNumbering(number) {
+            const arabicTens = [
+            "", "العاشر", "العشرون", "الثلاثون", "الأربعون"
+    ];
+            const arabicUnits = [
+            "", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", 
+            "السادس", "السابع", "الثامن", "التاسع"
+    ];
+            const specialUnits = [
+            "", "الحادي", "الثاني", "الثالث", "الرابع", 
+            "الخامس", "السادس", "السابع", "الثامن", "التاسع"
+    ];
 
-    if (number <= 10) {
-        return arabicUnits[number - 1];
-    }
-    if (specialCases[number]) {
-        return specialCases[number];
-    }
-    if (number % 10 === 0 && number <= 40) {
-        return arabicTens[number / 10];
-    }
-    if (number <= 40) {
-        const tens = Math.floor(number / 10);
-        const units = number % 10;
-        return `${arabicUnits[units - 1]} ${arabicTens[tens]}`;
+            if (number <= 10) {
+            return arabicUnits[number];
     }
 
-    return `رقم ${number}`; // Fallback für höhere Nummern
+            if (number === 20) {
+            return "العشرون";
+    }
+
+            const tens = Math.floor(number / 10);
+            const units = number % 10;
+
+            if (units === 0) {
+        // Zahlen wie 20, 30, 40
+            return arabicTens[tens];
+    }       else if (units === 1 && tens > 1) {
+        // Zahlen wie 21, 31, 41
+            return `${specialUnits[units]} و${arabicTens[tens]}`;
+    } else {
+        // Zahlen wie 22, 23, 32, 33 ...
+            return `${arabicUnits[units]} و${arabicTens[tens]}`;
+    }
 }
 
         // funktion zu mehr zeigen
