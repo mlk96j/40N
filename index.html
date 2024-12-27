@@ -126,6 +126,17 @@
             "", "الحادي", "الثاني", "الثالث", "الرابع", 
             "الخامس", "السادس", "السابع", "الثامن", "التاسع"
     ];
+            const specialCases = {
+            11: "الحادي عشر",
+            12: "الثاني عشر",
+            13: "الثالث عشر",
+            14: "الرابع عشر",
+            15: "الخامس عشر",
+            16: "السادس عشر",
+            17: "السابع عشر",
+            18: "الثامن عشر",
+            19: "التاسع عشر"
+    };
 
             if (number <= 10) {
             return arabicUnits[number];
@@ -141,7 +152,7 @@
             if (units === 0) {
         // Zahlen wie 20, 30, 40
             return arabicTens[tens];
-    }       else if (units === 1 && tens > 1) {
+    }       else if (units === 1 && tens > 2) {
         // Zahlen wie 21, 31, 41
             return `${specialUnits[units]} و${arabicTens[tens]}`;
     } else {
