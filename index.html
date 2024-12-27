@@ -141,6 +141,8 @@
             if (number <= 10) {
             return arabicUnits[number];
     }
+            if (specialCases[number]) {
+            return specialCases[number];
 
             if (number === 20) {
             return "العشرون";
@@ -152,7 +154,7 @@
             if (units === 0) {
         // Zahlen wie 20, 30, 40
             return arabicTens[tens];
-    }       else if (units === 1 && tens > 2) {
+    }       else if (units === 1 && tens > 1) {
         // Zahlen wie 21, 31, 41
             return `${specialUnits[units]} و${arabicTens[tens]}`;
     } else {
