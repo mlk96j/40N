@@ -96,16 +96,23 @@
 
             infoNumber.textContent = `الحديث: ${arabicNumbering(randomInfo.number)}`;
 
-            // Lösche vorherigen Inhalt und füge Absätze hinzu
+                // Lösche vorherigen Inhalt und füge Absätze mit Stilen hinzu
             infoContent.innerHTML = ""; 
             randomInfo.main.forEach(paragraph => {
                 const p = document.createElement('p');
-                p.textContent = paragraph;
-                infoContent.appendChild(p);
-            });
+                p.textContent = paragraph.text;
 
-            detailsContent.textContent = randomInfo.details;
-        });
+        // Wende individuelle Stile an
+        if (paragraph.style) {
+            if (paragraph.style.fontSize) p.style.fontSize = paragraph.style.fontSize;
+            if (paragraph.style.color) p.style.color = paragraph.style.color;
+        }
+
+        infoContent.appendChild(p);
+    });
+
+    detailsContent.textContent = randomInfo.details;
+});
 // Arabische Nummerierung dynamisch generierenfunction arabicNumbering(number) {
     function arabicNumbering(number) {
         const arabicUnits = [
